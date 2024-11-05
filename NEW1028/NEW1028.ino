@@ -1,23 +1,23 @@
-int trigPin_L = 35;
-int echoPin_L = 37;
-int trigPin_R = 39;
-int echoPin_R = 41;
+int trigPin_L = 39;    
+int echoPin_L = 41;    
+int trigPin_R = 43;    
+int echoPin_R = 45; 
 
 long duration_L, Lcm, duration_R, Rcm ;  //宣告計算距離時，需要用到的兩個實數
 
-int IR_L = 31; //-----------左邊紅外線
-int IR_R = 33; //-----------右邊紅外線
+int IR_L = 35; //-----------左邊紅外線
+int IR_R = 37; //-----------右邊紅外線
 #define IR_state HIGH //紅外線狀態
 #define IR_L digitalRead(IR_L)
 #define IR_R digitalRead(IR_R)
 
-int sw1 = 23;
-int sw2 = 25;
+int sw1 = 23;//o > mode1
+int sw2 = 25;//x > mode2
 int sw3 = 27;
 int sw4 = 29;
 
-int L[] = {3, 2, 7}; //motor1 (in1A,in1B,pwm1)
-int R[] = {5, 6, 4}; //motor2 (in2A,in2B,pwm2)
+int L[] = {4,3,2}; //motor1 (in1A,in1B,pwm1)
+int R[] = {6,7,5}; //motor2 (in2A,in2B,pwm2)
 
 int mode = 0;
 

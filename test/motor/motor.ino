@@ -1,5 +1,5 @@
-int L[] = {6,5,7}; //motor1 (in1A,in1B,pwm1)
-int R[] = {3,2,4}; //motor2 (in2A,in2B,pwm2)
+int L[] = {4,3,2}; //motor1 (in1A,in1B,pwm1)
+int R[] = {6,7,5}; //motor2 (in2A,in2B,pwm2)
 
 int i;
 
