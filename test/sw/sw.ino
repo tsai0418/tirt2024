@@ -1,7 +1,7 @@
-int sw1 = 30;//o > mode1
-int sw2 = 32;//x > mode2
-//int sw3 = 28;
-//int sw4 = 30;
+int sw1 = 23;//o > mode1
+int sw2 = 25;//x > mode2
+int sw3 = 27;
+int sw4 = 29;
 
 int mode = 0;
 
@@ -10,18 +10,18 @@ void setup(){
 
   pinMode(sw1, INPUT);
   pinMode(sw2, INPUT);
-//  pinMode(sw3, INPUT);
-//  pinMode(sw4, INPUT);
+  pinMode(sw3, INPUT);
+  pinMode(sw4, INPUT);
 }
 
 void loop(){
 
   delay(500);
 
-  Serial.print("sw1=");
-  Serial.println(digitalRead(sw1));
-  Serial.print("sw2=");
-  Serial.println(digitalRead(sw2));
+//  Serial.print("sw1=");
+//  Serial.println(digitalRead(sw1));
+//  Serial.print("sw2=");
+//  Serial.println(digitalRead(sw2));
   select();
 
   switch(mode)
@@ -36,12 +36,12 @@ void loop(){
 //             Serial.println(digitalRead(sw2));
              Serial.println(" mode2 ");
              break;         
-//     case 3:;
-//             Serial.println(" mode3 ");
-//             break; 
-//     case 4:
-//             Serial.println(" mode4 ");
-//             break; 
+     case 3:;
+             Serial.println(" mode3 ");
+             break; 
+     case 4:
+             Serial.println(" mode4 ");
+             break; 
      default:
              Serial.println(" x ");    
              break;              
@@ -66,19 +66,19 @@ void select()
       delay(2000);
     }
   }
-//  else if(digitalRead(sw3) == LOW)//sw3
-//  {
-//    delay(20);
-//    if (digitalRead(sw3) == LOW){
-//      mode = 3;
-//      delay(1400);
-//    }
-//  }
-//  else if(digitalRead(sw4) == LOW)//sw4
-//  {
-//    delay(20);
-//    if (digitalRead(sw4) == LOW){
-//      mode = 4;
-//    }
-//  }
+  else if(digitalRead(sw3) == LOW)//sw3
+  {
+    delay(20);
+    if (digitalRead(sw3) == LOW){
+      mode = 3;
+      delay(1400);
+    }
+  }
+  else if(digitalRead(sw4) == LOW)//sw4
+  {
+    delay(20);
+    if (digitalRead(sw4) == LOW){
+      mode = 4;
+    }
+  }
 }

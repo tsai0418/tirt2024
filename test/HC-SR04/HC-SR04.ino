@@ -1,7 +1,7 @@
-int trigPin_L = 35;    
-int echoPin_L = 37;    
-int trigPin_R = 39;    
-int echoPin_R = 41; 
+int trigPin_L = 39;    
+int echoPin_L = 41;    
+int trigPin_R = 43;    
+int echoPin_R = 45; 
 
 long duration_L, Lcm, duration_R, Rcm ;  //宣告計算距離時，需要用到的兩個實數
  
@@ -15,7 +15,6 @@ void setup() {
  
 void loop()
 {                        
-  
   delay(300);
   //程式計算出距離值 cm
   digitalWrite(trigPin_L, LOW);
