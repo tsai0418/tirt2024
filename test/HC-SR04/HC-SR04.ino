@@ -26,8 +26,8 @@ void loop()
   duration_L = pulseIn(echoPin_L, HIGH);
   Lcm = (duration_L/2) / 29.1; 
   
-  Serial.print(Lcm);     //印出距離值 cm 在序列埠監控顯示器 單位公分
-  Serial.println(" Lcm");
+  Serial.print("Lcm ");     //印出距離值 cm 在序列埠監控顯示器 單位公分
+  Serial.println(Lcm);
 
   digitalWrite(trigPin_R, LOW);
   delayMicroseconds(5);
@@ -38,6 +38,6 @@ void loop()
   duration_R = pulseIn(echoPin_R, HIGH);
   Rcm = (duration_R/2) / 29.1; 
   
-  Serial.print(Rcm);     //印出距離值 cm 在序列埠監控顯示器 單位公分
-  Serial.println(" Rcm");
+  Serial.print("Rcm ");     //印出距離值 cm 在序列埠監控顯示器 單位公分
+  Serial.println(Rcm);
 }
