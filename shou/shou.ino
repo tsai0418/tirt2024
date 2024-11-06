@@ -1,27 +1,27 @@
 //---------------超聲波---------------
-int trigPin_L = 39;
-int echoPin_L = 41;
-int trigPin_R = 43;
-int echoPin_R = 45;
+int trigPin_L = 17;
+int echoPin_L = 16;
+int trigPin_R = 14;
+int echoPin_R = 15;
 
 long duration_L, Lcm, duration_R, Rcm ;  //宣告計算距離時，需要用到的兩個實數
 
 //---------------紅外線---------------
-int IR_L = 35; //左邊紅外線
-int IR_R = 37; //右邊紅外線
-#define IR_state HIGH //紅外線狀態
+int IR_L = 19; //左邊紅外線
+int IR_R = 18; //右邊紅外線
+#define IR_state LOW //紅外線狀態
 #define IR_L digitalRead(IR_L)
 #define IR_R digitalRead(IR_R)
 
 //---------------按鈕---------------
-int sw1 = 23;//o > mode1
-int sw2 = 25;//x > mode2
-int sw3 = 27;
-int sw4 = 29;
+int sw1 = 2;//o > mode1
+int sw2 = 3;//x > mode2
+int sw3 = 4;
+int sw4 = 5;
 
 //---------------馬達---------------
-int L[] = {3, 4, 2}; //motor1 (in1A,in1B,pwm1)
-int R[] = {7, 6, 5}; //motor2 (in2A,in2B,pwm2)
+int L[] = {6, 7, 10}; //motor1 (in1A,in1B,pwm1)
+int R[] = {8, 9, 11}; //motor2 (in2A,in2B,pwm2)
 
 int mode = 0; //初始模式0
 
@@ -166,29 +166,27 @@ void IR() //循線
   {
     int i = random(300, 500);
     stopp();
-    delay(20);
+    delay(50);
     back();
-    delay(800);
+    delay(300);
     three_L(i, 60);
   }
   else if ((IR_L == !(IR_state)) && (IR_R == IR_state) ) //右黑
   {
-
     int i = random(300, 600);
     stopp();
-    delay(20);
+    delay(50);
     back();
-    delay(800);
+    delay(300);
     three_R(i, 60);
   }
   else if (((IR_L) == !(IR_state)) && ((IR_R) == !(IR_state) )) //都白
   {
-
     int i = random(300, 600);
     stopp();
-    delay(20);
+    delay(50);
     back();
-    delay(1000);
+    delay(300);
     circle_L(60);
     delay(i);
   }
@@ -198,34 +196,34 @@ void m0()//
 {
   HRSR04();
 
-  if ((Lcm >= 40 && Rcm >= 40) || (Lcm == 0 && Rcm == 0))
+  if ((Lcm >= 60 && Rcm >= 60) || (Lcm == 0 && Rcm == 0))
   {
     go(80);
     Serial.println(" 沒人 ");
   }
-  else if (Lcm < 40 && (Rcm == 0 || Rcm > 40))
+  else if (Lcm < 60 && (Rcm == 0 || Rcm > 60))
   {
-    turn(100, 30);
+    turn(110, 30);
     Serial.println(" 左邊有人 ");
   }
-  else if ((Lcm == 0 || Lcm > 40) && Rcm < 40)
+  else if ((Lcm == 0 || Lcm > 60) && Rcm < 60)
   {
-    turn(30, 100);
+    turn(30, 110);
     Serial.println(" 右邊有人 ");
   }
   else if (Lcm <= 32 && (Rcm == 0 || Rcm >= 32))
   {
-    turn(170, 20);
+    turn(180, 20);
     Serial.println("左邊有人");
   }
   else if ((Lcm == 0 || Lcm >= 32) && Rcm <= 32)
   {
-    turn(30, 170);
+    turn(30, 180);
     Serial.println("右邊有人");
   }
   else if ((Lcm < 25 && Rcm < 25) && (Lcm >= 1 && Rcm >= 1))
   {
-    int value = 170;
+    int value = 180;
     while (Lcm < 25 && Rcm < 25)
     {
       HRSR04();
@@ -307,22 +305,22 @@ void m2() //中間找人
   }
   else if (Lcm < 40 && (Rcm == 0 || Rcm > 40))
   {
-    turn(80, 10);
+    turn(120, 100);
     Serial.println(" 左邊有人 ");
   }
   else if ((Lcm == 0 || Lcm > 40) && Rcm < 40)
   {
-    turn(10, 80);
+    turn(100, 120);
     Serial.println(" 右邊有人 ");
   }
   else if (Lcm <= 30 && (Rcm == 0 || Rcm > 30))
   {
-    turn(150, 10);
+    turn(200, 100);
     Serial.println("左邊有人");
   }
   else if ((Lcm == 0 || Lcm > 30) && Rcm <= 30)
   {
-    turn(10, 150);
+    turn(100, 200);
     Serial.println("右邊有人");
   }
   else if ((Lcm < 25 && Rcm < 25) && (Lcm >= 1 && Rcm >= 1))
@@ -336,8 +334,8 @@ void m2() //中間找人
       go(value);
       value ++;
       delay(0.01);
-      if (value >= 255)
-        value = 255;
+      if (value >= 254)
+        value = 254;
       if (Lcm > 25 && Rcm > 25)
         break;
       else if (Lcm ==  0 && Rcm == 0)
@@ -407,10 +405,10 @@ void go(int value)//前進
 
 void turn(int value_R, int value_L)
 {
-  digitalWrite(L[1], HIGH);
-  digitalWrite(L[0], LOW);
-  digitalWrite(R[1], HIGH);
-  digitalWrite(R[0], LOW);
+  digitalWrite(L[0], HIGH);
+  digitalWrite(L[1], LOW);
+  digitalWrite(R[0], HIGH);
+  digitalWrite(R[1], LOW);
 
   analogWrite(L[2], value_L );
   analogWrite(R[2], value_R );

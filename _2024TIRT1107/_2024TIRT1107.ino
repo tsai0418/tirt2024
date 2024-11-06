@@ -132,7 +132,7 @@ void select() //選擇模式並出發
       go(200);
       delay(200);
       go(250);
-      delay(300);
+      delay(200);
     }
   }
 }
@@ -166,29 +166,27 @@ void IR() //循線
   {
     int i = random(300, 500);
     stopp();
-    delay(20);
+    delay(50);
     back();
-    delay(800);
+    delay(300);
     three_L(i, 60);
   }
   else if ((IR_L == !(IR_state)) && (IR_R == IR_state) ) //右黑
   {
-
     int i = random(300, 600);
     stopp();
-    delay(20);
+    delay(50);
     back();
-    delay(800);
+    delay(300);
     three_R(i, 60);
   }
   else if (((IR_L) == !(IR_state)) && ((IR_R) == !(IR_state) )) //都白
   {
-
     int i = random(300, 600);
     stopp();
-    delay(20);
+    delay(50);
     back();
-    delay(1000);
+    delay(300);
     circle_L(60);
     delay(i);
   }
@@ -198,17 +196,17 @@ void m0()//
 {
   HRSR04();
 
-  if ((Lcm >= 40 && Rcm >= 40) || (Lcm == 0 && Rcm == 0))
+  if ((Lcm >= 60 && Rcm >= 60) || (Lcm == 0 && Rcm == 0))
   {
     go(80);
     Serial.println(" 沒人 ");
   }
-  else if (Lcm < 40 && (Rcm == 0 || Rcm > 40))
+  else if (Lcm < 60 && (Rcm == 0 || Rcm > 60))
   {
     turn(100, 30);
     Serial.println(" 左邊有人 ");
   }
-  else if ((Lcm == 0 || Lcm > 40) && Rcm < 40)
+  else if ((Lcm == 0 || Lcm > 60) && Rcm < 60)
   {
     turn(30, 100);
     Serial.println(" 右邊有人 ");
@@ -220,12 +218,12 @@ void m0()//
   }
   else if ((Lcm == 0 || Lcm >= 32) && Rcm <= 32)
   {
-    turn(30, 170);
+    turn(20, 170);
     Serial.println("右邊有人");
   }
   else if ((Lcm < 25 && Rcm < 25) && (Lcm >= 1 && Rcm >= 1))
   {
-    int value = 170;
+    int value = 180;
     while (Lcm < 25 && Rcm < 25)
     {
       HRSR04();
@@ -253,22 +251,22 @@ void m1()
   }
   else if (Lcm < 40 && (Rcm == 0 || Rcm > 40))
   {
-    turn(80, 10);
+    turn(100, 30);
     Serial.println(" 左邊有人 ");
   }
   else if ((Lcm == 0 || Lcm > 40) && Rcm < 40)
   {
-    turn(10, 80);
+    turn(30, 100);
     Serial.println(" 右邊有人 ");
   }
   else if (Lcm <= 32 && (Rcm == 0 || Rcm > 32))
   {
-    turn(150, 10);
+    turn(170, 20);
     Serial.println("左邊有人");
   }
   else if ((Lcm == 0 || Lcm > 32) && Rcm <= 32)
   {
-    turn(10, 150);
+    turn(20, 170);
     Serial.println("右邊有人");
   }
   else if ((Lcm < 25 && Rcm < 25) && (Lcm >= 1 && Rcm >= 1))
@@ -307,22 +305,22 @@ void m2() //中間找人
   }
   else if (Lcm < 40 && (Rcm == 0 || Rcm > 40))
   {
-    turn(80, 10);
+    turn(100, 30);
     Serial.println(" 左邊有人 ");
   }
   else if ((Lcm == 0 || Lcm > 40) && Rcm < 40)
   {
-    turn(10, 80);
+    turn(30, 100);
     Serial.println(" 右邊有人 ");
   }
   else if (Lcm <= 30 && (Rcm == 0 || Rcm > 30))
   {
-    turn(150, 10);
+    turn(170, 20);
     Serial.println("左邊有人");
   }
   else if ((Lcm == 0 || Lcm > 30) && Rcm <= 30)
   {
-    turn(10, 150);
+    turn(20, 170);
     Serial.println("右邊有人");
   }
   else if ((Lcm < 25 && Rcm < 25) && (Lcm >= 1 && Rcm >= 1))
@@ -372,7 +370,7 @@ void m3()
   }
   else if ((Lcm == 0 || Lcm > 32) && Rcm <= 32)
   {
-    turn(30, 170);
+    turn(20, 170);
     Serial.println("右邊有人");
   }
   else if ((Lcm < 25 && Rcm < 25) && (Lcm >= 1 && Rcm >= 1))
