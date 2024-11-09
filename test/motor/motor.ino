@@ -1,5 +1,5 @@
-int L[] = {4,3,2}; //motor1 (in1A,in1B,pwm1)
-int R[] = {6,7,5}; //motor2 (in2A,in2B,pwm2)
+int L[] = {36,34,6}; //motor1 (in1A,in1B,pwm1)
+int R[] = {38,40,6}; //motor2 (in2A,in2B,pwm2)
 
 int i;
 
@@ -19,7 +19,7 @@ void setup() {
   digitalWrite(R[0], LOW);
   digitalWrite(R[1], LOW);
 
-  aaa();
+  back();
   
 }
 
@@ -62,8 +62,8 @@ void back()//後退
   digitalWrite(R[1], HIGH);
   digitalWrite(R[0], LOW);
 
-  analogWrite(L[2],30);
-  analogWrite(R[2],30);
+  analogWrite(L[2],250);
+  analogWrite(R[2],250);
 }
 
 void stopp()//停止
